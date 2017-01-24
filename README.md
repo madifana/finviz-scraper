@@ -1,2 +1,2 @@
-# finviz-scraper
-Scrapes a custom screener from Finviz.com and displays the results. Selecting one of the results will display more information about the company.
+# stock-screener
+Utilizes up-to-date stock market information from the Finviz website to screen for strong stocks that appear to be a good buying opportunity.

@@ -7,4 +7,8 @@ attr_accessor :ticker, :company, :sector, :price
 		@url = url
 	end
 
+	def self.all
+		@@all ||= scrape_screener
+	end
+
 end

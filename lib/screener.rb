@@ -11,4 +11,8 @@ attr_accessor :ticker, :company, :sector, :price
 		@@all ||= scrape_screener
 	end
 
+	def self.find(id)
+		self.all[id-1]
+	end
+
 end

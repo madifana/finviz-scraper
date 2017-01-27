@@ -15,4 +15,10 @@ attr_accessor :ticker, :company, :sector, :price
 		self.all[id-1]
 	end
 
+	def self.scrape_screener
+		doc = Nokogiri::HTML(open("http://www.finviz.com/screener.ashx?v=111&f=fa_netmargin_pos,sh_avgvol_o2000,ta_candlestick_d&ft=4"))
+		tickers = doc.search('a[class="screener-link-primary"]')
+		tickers.collect{|e| new(e.text.strip, "http://finviz.com#{e.attr("href").split("?").first.strip}")}
+	end
+
 end

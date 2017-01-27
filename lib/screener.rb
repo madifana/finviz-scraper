@@ -21,4 +21,8 @@ attr_accessor :ticker, :company, :sector, :price
 		tickers.collect{|e| new(e.text.strip, "http://finviz.com#{e.attr("href").split("?").first.strip}")}
 	end
 
+	def doc
+		@doc ||= Nokogiri::HTML(open(self.url))
+	end
+
 end

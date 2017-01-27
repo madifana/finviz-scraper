@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
 
-require_relateve '../lib'
+require_relative '..config/environment'
 
-StockScreener::CLI.new.call

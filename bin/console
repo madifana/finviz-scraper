@@ -1,8 +1,0 @@
-#!/usr/bin/env ruby
-
-
-require "bundler/setup"
-require "stock-screener"
-
-require "irb"
-IRB.start

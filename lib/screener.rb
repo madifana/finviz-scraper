@@ -16,7 +16,15 @@ attr_accessor :ticker, :company, :sector, :price, :url
 	end
 
 	def company
-		@company ||= doc.search()
+		@company ||= doc.search('td[2] a[class="screener-link"]').text.strip
+	end
+
+	def sector
+		@sector ||= doc.search('td[4] a[class="screener-link"]').text.strip
+	end
+
+	def price
+		@sector ||= doc.search('td[9] a[class="screener-link"] span').text.strip
 	end
 
 	def self.find_by_ticker(ticker)

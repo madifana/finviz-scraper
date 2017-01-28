@@ -1,6 +1,6 @@
-class StockScreener::StockScreener
+class StockScreener::Screener
 
-attr_accessor :ticker, :company, :sector, :price
+attr_accessor :ticker, :company, :sector, :price, :url
 
 	def initialize(ticker=nil, url=nil)
 		@ticker = ticker
@@ -13,6 +13,17 @@ attr_accessor :ticker, :company, :sector, :price
 
 	def self.find(id)
 		self.all[id-1]
+	end
+
+	def company
+		@company ||= doc.search()
+	end
+
+	def self.find_by_ticker(ticker)
+		self.all.detect do |t|
+			t.ticker.downcase.strip == ticker.downcase.strip ||
+			t.ticker.split("(").first.strip.downcase == ticker.downcase.strip
+		end
 	end
 
 	def self.scrape_screener

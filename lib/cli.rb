@@ -46,6 +46,14 @@ class StockScreener::CLI
 				puts "#{index}. #{s.ticker}"
 			end
 	end
-	
 
+	def print_stock
+		puts ""
+		puts "----------  #{stock.ticker}  ----------"
+		puts ""
+		puts "Name of Company:          #{stock.company}"
+		puts "Market Sector:            #{stock.sector}"
+		puts "Current Stock Price:      #{stock.price}"
+		puts ""
+	end
 end

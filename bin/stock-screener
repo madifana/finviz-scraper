@@ -2,3 +2,4 @@
 
 require_relative '..config/environment'
 
+StockScreener::CLI.new.call

@@ -1,7 +1,7 @@
 class StockScreener::CLI
 
 	def call
-		StockScreener::Screener.new.make_stocks
+		StockScreener::Scraper.new.make_stocks
 		puts ""
 		puts ""
 		puts "Welcome to your custom stock screener!"
@@ -52,8 +52,8 @@ class StockScreener::CLI
 		puts "----------  #{stock.ticker}  ----------"
 		puts ""
 		puts "Name of Company:          #{stock.company}"
-		#puts "Market Sector:            #{stock.sector}"
-		#puts "Current Stock Price:      #{stock.price}"
-		#puts ""
+		puts "Market Sector:            #{stock.sector}"
+		puts "Current Stock Price:      #{stock.price}"
+		puts ""
 	end
 end

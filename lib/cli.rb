@@ -1,7 +1,7 @@
 class StockScreener::CLI
 
 	def call
-		StockScreener::Screener.new.find_by_ticker
+		StockScreener::Screener.new.make_stocks
 		puts ""
 		puts ""
 		puts "Welcome to your custom stock screener!"
@@ -21,8 +21,8 @@ class StockScreener::CLI
 
 		puts ""
 		puts "Which stock would you like to see more information on?"
-		input = gets.strip
-		stock = StockScreener::Screener.find(input.to_i)
+		input = gets.strip.to_i
+		stock = StockScreener::Screener.find(input)
 
 		print_stock(stock)
 		puts ""
@@ -47,13 +47,13 @@ class StockScreener::CLI
 			end
 	end
 
-	def print_stock
+	def print_stock(stock)
 		puts ""
 		puts "----------  #{stock.ticker}  ----------"
 		puts ""
 		puts "Name of Company:          #{stock.company}"
-		puts "Market Sector:            #{stock.sector}"
-		puts "Current Stock Price:      #{stock.price}"
-		puts ""
+		#puts "Market Sector:            #{stock.sector}"
+		#puts "Current Stock Price:      #{stock.price}"
+		#puts ""
 	end
 end

@@ -1,3 +1,6 @@
 source 'https://rubygems.org'
 
-gemspec
+gem 'rake'
+gem 'pry'
+gem 'require_all'
+gem 'nokogiri'

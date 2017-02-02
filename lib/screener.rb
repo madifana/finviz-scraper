@@ -2,9 +2,22 @@ class StockScreener::Screener
 
 attr_accessor :ticker, :company, :sector, :price, :url
 
+	def self.new_from_screener(r)
+		self.new(
+			r.css(a"screener-link-primary").text,
+			"http://www.finviz.com/screener.ashx?v=111&f=fa_netmargin_pos,sh_avgvol_o2000,ta_candlestick_d&ft=4",
+			r.css(td[3]).text,
+			r.css(td[4]).text,
+			r.css(td[9]).text
+			)
+	end
+
 	def initialize(ticker=nil, url=nil)
 		@ticker = ticker
 		@url = url
+		@company = company
+		@sector = sector
+		@price = price
 	end
 
 	def self.all
@@ -41,12 +54,7 @@ attr_accessor :ticker, :company, :sector, :price, :url
 		tickers.collect{|e| new(e.text.strip, "http://finviz.com#{e.attr("href").split("?").first.strip}")}
 	end
 
-	
-
 	def doc
 		@doc = Nokogiri::HTML(open("http://www.finviz.com/screener.ashx?v=111&f=fa_netmargin_pos,sh_avgvol_o2000,ta_candlestick_d&ft=4"))
 	end
-
-	
-
 end

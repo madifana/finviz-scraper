@@ -2,6 +2,8 @@ class StockScreener::Screener
 
 attr_accessor :ticker, :company, :sector, :price, :url
 
+	@@all = []
+
 	def self.new_from_screener(r)
 		self.new(
 			r.css(a"screener-link-primary").text,
@@ -18,6 +20,7 @@ attr_accessor :ticker, :company, :sector, :price, :url
 		@company = company
 		@sector = sector
 		@price = price
+		@@all << self.all
 	end
 
 	def self.all
